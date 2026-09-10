@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Dumpling Cat</title>
+  <meta name="description" content="Dumpling Cat is an independent game studio in Groningen making games for streamers and online content creators.">
+  <meta property="og:title" content="Home | Dumpling Cat">
+  <meta property="og:site_name" content="Dumpling Cat">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Wix Madefor is the font Wix uses by default; it is free on Google Fonts. Titan One stands in for the pink bubble headline. -->
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Wix+Madefor+Display:wght@400;600;700;800&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* ------------------------------------------------------------
+       Tokens — colours sampled from the Wix site
+       ------------------------------------------------------------ */
+    :root {
+      --orange: #FFAD6A;
+      --cream:  #FFF3CF;
+      --pink:   #F9A3D8;
+      --pink-light: #FFE4F4;
+      --ink:    #222222;
+      --footer: #FFF1E6;
+
+      --font-display: "Wix Madefor Display", "Segoe UI", sans-serif;
+      --font-body: "Wix Madefor Text", "Segoe UI", sans-serif;
+      --font-bubble: "Titan One", "Arial Black", sans-serif;
+
+      --wrap: 1120px;
+      --gutter: clamp(1.25rem, 4vw, 2.5rem);
+      --radius-lg: 48px;
+      --radius: 20px;
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background: var(--orange);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+    h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.1; }
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 1.75rem; }
+    h3 { font-size: 1.5rem; font-weight: 700; }
+    p { margin: 0 0 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+    .section { padding-block: clamp(3rem, 6vw, 4.5rem); }
+    .band { background: var(--cream); }
+    .hero-grid > *, .soon-grid > *, .values-grid > *, .team-grid > *, .member > *, .contact-grid > * { min-width: 0; }
+
+    /* Pink bubble lettering */
+    .bubble {
+      font-family: var(--font-bubble);
+      font-weight: 400;
+      color: var(--pink);
+      -webkit-text-stroke: 5px var(--pink-light);
+      paint-order: stroke fill;
+      text-shadow: 0 3px 0 var(--pink-light);
+      letter-spacing: 0.01em;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns:
+        minmax(var(--gutter), 1fr)
+        minmax(0, calc(var(--wrap) / 2))
+        minmax(0, calc(var(--wrap) / 2))
+        minmax(var(--gutter), 1fr);
+      align-items: center;
+      padding: 2rem 0 3rem;
+    }
+    .hero-panel {
+      grid-column: 1 / 3;
+      display: grid;
+      grid-template-columns: subgrid;
+      background: var(--cream);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: clamp(2rem, 4vw, 3.5rem) 0;
+    }
+    .hero-panel > div { grid-column: 2; padding-right: clamp(1.5rem, 4vw, 3rem); }
+    .hero h1 { font-size: clamp(2.6rem, 5vw, 3.75rem); line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero p { font-size: clamp(1.1rem, 1.6vw, 1.35rem); max-width: 34ch; }
+    .hero-logo { grid-column: 3; padding: 1rem clamp(1rem, 3vw, 2.5rem); }
+    .hero-logo img { width: min(100%, 460px); margin-inline: auto; }
+    @media (max-width: 800px) {
+      .hero { row-gap: 1.5rem; padding-top: 1.5rem; }
+      .hero-panel { grid-column: 1 / -1; grid-template-columns: subgrid; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+      .hero-panel > div { grid-column: 2 / 4; padding-right: 0; }
+      .hero-logo { grid-column: 2 / 4; }
+    }
+
+    /* ---------- Coming soon ---------- */
+    .soon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 4rem; align-items: center; }
+    .teaser {
+      background: var(--cream);
+      border: 1px solid var(--orange);
+      border-radius: 28px;
+      padding: 0.75rem;
+      max-width: 34rem;
+    }
+    .teaser img { width: 100%; border-radius: 20px; aspect-ratio: 3 / 2; object-fit: cover; }
+    .soon-text h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1.25rem; }
+    .soon-text p { font-size: clamp(1.1rem, 1.6vw, 1.35rem); max-width: 30ch; }
+    @media (max-width: 720px) { .soon-grid { grid-template-columns: 1fr; } .teaser { max-width: none; } }
+
+    /* ---------- Values ---------- */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .value {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.5rem 1.75rem;
+    }
+    .value h3 { text-align: center; margin-bottom: 1.25rem; }
+    .value p { font-size: 0.95rem; }
+    @media (max-width: 720px) { .values-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    /* ---------- Team ---------- */
+    .team h2 { text-align: right; }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .member { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.5rem; align-items: start; }
+    .member img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; }
+    .member-card {
+      background: var(--orange);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .member-card h3 { text-align: center; margin-bottom: 1rem; }
+    .roles { margin: 0; padding-left: 1.1rem; font-size: 0.95rem; }
+    .roles li { margin-bottom: 0.8rem; }
+    .roles li:last-child { margin-bottom: 0; }
+    @media (max-width: 960px) { .team-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .member { grid-template-columns: 1fr; } .member img { max-width: 16rem; } }
+
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem 4rem; align-items: center; }
+    .contact-logo img { width: min(100%, 420px); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .field { display: grid; margin-bottom: 1.5rem; }
+    .field label { font-size: 0.8rem; color: #444; margin-bottom: 0.35rem; }
+    .field input, .field textarea {
+      width: 100%; font: inherit; color: var(--ink);
+      background: transparent; border: 0; border-bottom: 1px solid var(--ink);
+      padding: 0.35rem 0; border-radius: 0;
+    }
+    .field textarea { min-height: 3.5rem; resize: vertical; }
+    .check { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; margin-bottom: 1.25rem; }
+    .check input { width: 1rem; height: 1rem; margin: 0; accent-color: var(--ink); }
+    .btn {
+      font: inherit; font-size: 0.9rem; cursor: pointer;
+      background: var(--ink); color: #fff; border: 0; border-radius: 0;
+      padding: 0.6rem 2rem; min-width: 14rem;
+      transition: background 120ms ease;
+    }
+    .btn:hover { background: #000; }
+    .form-status { margin-top: 1rem; font-size: 0.95rem; font-weight: 600; min-height: 1.5rem; }
+    .form-status.error { color: #8A1C00; }
+    @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } .contact-logo img { width: min(100%, 300px); } }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; gap: 0; } .btn { width: 100%; } }
+
+    /* ---------- Footer ---------- */
+    .footer { background: var(--footer); padding-block: 2.5rem; }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 2rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; text-decoration: none; }
+    .footer-brand img { width: 2rem; }
+    .footer p { margin-top: 1.25rem; font-size: 0.95rem; }
+    .follow { text-align: right; }
+    .follow h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+    .socials { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.6rem; justify-content: flex-end; }
+    .socials a {
+      display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
+      color: #fff; font-size: 0.95rem; text-decoration: none;
+    }
+    .socials .discord   { background: #5865F2; }
+    .socials .tiktok    { background: #000; }
+    .socials .youtube   { background: #FF0000; }
+    .socials .instagram { background: linear-gradient(45deg, #F9CE34, #EE2A7B 55%, #6228D7); }
+    @media (max-width: 560px) { .follow { text-align: left; } .socials { justify-content: flex-start; } }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-panel">
+        <div>
+          <h1 class="bubble">We are<br>Dumpling<br>Cats!</h1>
+          <p>We are an independent studio founded by two developers based in Groningen which focus on creating games for streamers and online content creators.</p>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <!-- TODO: swap for images/logo.png after running download-images.sh -->
+        <img src="https://static.wixstatic.com/media/8573d8_2f42c4ca6d1f48e984c600e8bcceba80~mv2.png/v1/crop/x_0,y_50,w_2048,h_1872/fill/w_980,h_896,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Logo%20with%20Text.png"
+             alt="Dumpling Cat logo: a cat curled up in a bamboo steamer" width="980" height="896">
+      </div>
+    </section>
+
+    <!-- Coming soon -->
+    <section class="section band" id="coming-soon">
+      <div class="wrap soon-grid">
+        <div class="teaser">
+          <!-- TODO: swap for images/teaser.png -->
+          <img src="https://static.wixstatic.com/media/8573d8_b68edc5979b24168a2478f1ade746e12~mv2.png/v1/fill/w_980,h_653,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/image%20(1).png"
+               alt="Coming soon: teaser of our next project" width="980" height="653" loading="lazy">
+        </div>
+        <div class="soon-text">
+          <h3>Next Project - TBA</h3>
+          <p>We’ve got something new in development.</p>
+          <p>We can’t wait to show you our first game, but for now… you’ll have to wait a little longer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section" id="values">
+      <div class="wrap">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          <div class="value">
+            <h3>Creativity</h3>
+            <p>We believe great ideas come from anywhere.<br>We are not bound to a single genre, but explore different concepts, styles and ways to play to give every game its own identity.</p>
+          </div>
+          <div class="value">
+            <h3>Collaboration</h3>
+            <p>We believe games can bring people together.<br>We work alongside creators to build meaningful collaborations where everyone can grow and benefit together.</p>
+          </div>
+          <div class="value">
+            <h3>Passion</h3>
+            <p>We care deeply about what we create.<br>We put passion, curiosity and dedication into every project, always striving to turn our ideas into something enjoyable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section band team" id="team">
+      <div class="wrap">
+        <h2>The Team</h2>
+        <div class="team-grid">
+          <article class="member">
+            <!-- TODO: swap for images/andrea.jpg -->
+            <img src="https://static.wixstatic.com/media/8573d8_b9c798181e0640bdb918f00cbc4ade46~mv2.jpg/v1/fill/w_980,h_550,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/5965036527458914140.jpg"
+                 alt="Andrea Chiarantoni" width="980" height="550" loading="lazy">
+            <div class="member-card">
+              <h3>Andrea Chiarantoni</h3>
+              <ul class="roles">
+                <li>Business Manager</li>
+                <li>Game Designer</li>
+                <li>Programmer</li>
+              </ul>
+            </div>
+          </article>
+          <article class="member">
+            <!-- TODO: swap for images/valentino.jpg -->
+            <img src="https://static.wixstatic.com/media/8573d8_944bbef929684e01b7f5b6676dfaa578~mv2.jpg/v1/crop/x_0,y_622,w_2448,h_2642/fill/w_980,h_1058,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/IMG_20260908_194454023.jpg"
+                 alt="Valentino Patrasc" width="980" height="1058" loading="lazy">
+            <div class="member-card">
+              <h3>Valentino Patrasc</h3>
+              <ul class="roles">
+                <li>Marketing Manager</li>
+                <li>3D Artist</li>
+                <li>Technical Artist</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-logo">
+            <img src="https://static.wixstatic.com/media/8573d8_2f42c4ca6d1f48e984c600e8bcceba80~mv2.png/v1/crop/x_0,y_50,w_2048,h_1872/fill/w_980,h_896,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Logo%20with%20Text.png"
+                 alt="" width="980" height="896" loading="lazy">
+          </div>
+
+          <!--
+            The form posts to Formspree (free tier is enough for a contact form).
+            1. Create a form at https://formspree.io and copy its endpoint.
+            2. Replace YOUR_FORM_ID below.
+          -->
+          <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name *</label>
+                <input id="name" name="name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="surname">Surname</label>
+                <input id="surname" name="surname" type="text" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="2" required></textarea>
+            </div>
+            <label class="check">
+              <input type="checkbox" name="content_creator" value="yes">
+              Are you a content creator?
+            </label>
+            <button class="btn" type="submit">Send</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="footer-brand" href="#top">
+          <!-- TODO: the small cat icon used here on Wix wasn't exportable; using the main logo for now -->
+          <img src="https://static.wixstatic.com/media/8573d8_2f42c4ca6d1f48e984c600e8bcceba80~mv2.png/v1/crop/x_0,y_50,w_2048,h_1872/fill/w_980,h_896,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Logo%20with%20Text.png" alt="">
+          Dumpling Cat
+        </a>
+        <p>Indie game development studio for content creators</p>
+      </div>
+      <div class="follow">
+        <h3>Follow Us</h3>
+        <ul class="socials">
+          <li><a class="discord" href="https://discord.gg/gzbdYgZ2vH" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a></li>
+          <li><a class="tiktok" href="https://www.tiktok.com/@dumpling_cat_games" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+          <li><a class="youtube" href="https://www.youtube.com/@DumplingCatGames" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+          <li><a class="instagram" href="https://www.instagram.com/dumplingcat.games/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Submit the contact form without leaving the page.
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.className = 'form-status';
+
+      if (!form.checkValidity()) {
+        status.textContent = 'Please fill in your name, email and message.';
+        status.classList.add('error');
+        return;
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Request failed');
+        form.reset();
+        status.textContent = 'Message sent. Thanks!';
+      } catch (err) {
+        status.textContent = 'Something went wrong. Please try again later.';
+        status.classList.add('error');
+      }
+    });
+  </script>
+</body>
+</html>
